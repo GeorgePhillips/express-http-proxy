@@ -56,7 +56,7 @@ module.exports = function proxy(host, options) {
 			};
 
 			var tempHost = hostObj;
-			if (!tempHost && typeof host != 'function') {
+			if (!tempHost && typeof host == 'function') {
 				tempHost = parseHost(host(req));
 			}
 
