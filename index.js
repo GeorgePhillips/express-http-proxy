@@ -61,7 +61,7 @@ module.exports = function proxy(host, options) {
 			}
 
 			if (!tempHost) {
-				next(new Error("No hostname provided"));
+				return next(new Error("No hostname provided"));
 			}
 
 			reqOpt.hostname = tempHost.host.toString();
