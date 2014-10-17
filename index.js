@@ -164,11 +164,10 @@ function extend(obj, source, skips) {
 function parseHost(host) {
 	if (!host) return null;
 	var mc = host.match(/^(https?:\/\/)/),
-		port = 80;
+		port = host.indexOf("https://") === 0 ? 443 : 80;
 
 	if (mc) {
 		host = host.substring(mc[1].length);
-		port = 443;
 	}
 
 	var h = host.split(':');
