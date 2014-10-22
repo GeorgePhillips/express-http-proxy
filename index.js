@@ -98,7 +98,7 @@ module.exports = function proxy(host, options) {
 					var rspData = Buffer.concat(chunks, totalLength);
 
 					if (intercept) {
-						intercept(rspData, req, res, function(err, rsp, sent) {
+						intercept(rspData, rsp, req, res, function(err, rsp, sent) {
 							if (err) {
 								return next(err);
 							}
@@ -126,7 +126,6 @@ module.exports = function proxy(host, options) {
 				rsp.on('error', function(e) {
 					next(e);
 				});
-
 
 				if (!res.headersSent) { // if header is not set yet
 					res.status(rsp.statusCode);
